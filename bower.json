@@ -1,0 +1,17 @@
+{
+	"name": "bs-menu",
+	"version": "0.1.0",
+	"homepage": "http://bigstud.io",
+	"authors": [
+		"Eric Wafford <psykel@gmail.com>"
+	],
+	"description": "A Mobile Friendly Draw Menu",
+	"main": "src/jquery.bs-menu.js",
+	"keywords": [
+		"jquery",
+		"plugin",
+		"menu",
+		"jquery-plugin"
+	],
+	"license": "MIT"
+}

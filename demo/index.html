@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery Boilerplate</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+	</head>
+	<body>
+		<div class="container">
+			<ul id="bs-menu" class="bs-menu-main">
+				<li class="bs-trigger">
+					<a class="bs-icon bs-icon-menu bs-menu__icon"><span>Menu</span></a>
+					<nav class="bs-menu-wrapper bs-menu__wrapper">
+						<div class="bs-scroller">
+							<ul class="bs-menu">
+								<li class="bs-search-item">
+									<input placeholder="Search" type="search" class="bs-search">
+									<a class="bs-icon bs-icon-search"><span>Search</span></a>
+								</li>
+								<li>
+									<a class="bs-icon bs-icon-download">Downloads</a>
+									<ul class="bs-submenu">
+										<li><a class="bs-icon bs-icon-illustrator">Vector Illustrations</a></li>
+										<li><a class="bs-icon bs-icon-photoshop">Photoshop files</a></li>
+									</ul>
+								</li>
+								<li><a class="bs-icon bs-icon-cog">Settings</a></li>
+								<li><a class="bs-icon bs-icon-help">Help</a></li>
+								<li>
+									<a class="bs-icon bs-icon-archive">Archives</a>
+									<ul class="bs-submenu">
+										<li><a class="bs-icon bs-icon-article">Articles</a></li>
+										<li><a class="bs-icon bs-icon-pictures">Images</a></li>
+										<li><a class="bs-icon bs-icon-videos">Videos</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div><!-- /bs-scroller -->
+					</nav>
+				</li>
+				<li><a href="http://tympanus.net/codrops">Codrops</a></li>
+				<li><a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/HeaderEffects/"><span>Previous Demo</span></a></li>
+				<li><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=16030"><span>Back to the Codrops Article</span></a></li>
+			</ul>
+			<header>
+				<h1>Google Nexus Website Menu <span>A sidebar menu as seen on the <a href="http://www.google.com/nexus/index.html">Google Nexus 7</a> page</span></h1>
+			</header>
+		</div><!-- /container -->
+		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="../src/jquery.bs-menu.js"></script>
+		<script>
+			$(function() {
+				$("#bs-menu").bsMenu();
+			});
+		</script>
+	</body>
+</html>
