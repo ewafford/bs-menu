@@ -37,19 +37,17 @@
 						</div><!-- /bs-scroller -->
 					</nav>
 				</li>
-				<li><a href="http://tympanus.net/codrops">Codrops</a></li>
-				<li><a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/HeaderEffects/"><span>Previous Demo</span></a></li>
-				<li><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=16030"><span>Back to the Codrops Article</span></a></li>
 			</ul>
-			<header>
-				<h1>Google Nexus Website Menu <span>A sidebar menu as seen on the <a href="http://www.google.com/nexus/index.html">Google Nexus 7</a> page</span></h1>
-			</header>
 		</div><!-- /container -->
 		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 		<script src="../src/jquery.bs-menu.js"></script>
 		<script>
 			$(function() {
-				$("#bs-menu").bsMenu();
+				$("#bs-menu").bsMenu({
+					onClose: function() {
+						console.log('onClose Fired');
+					}
+				});
 			});
 		</script>
 	</body>

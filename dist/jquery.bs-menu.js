@@ -22,7 +22,9 @@
 		var pluginName = "bsMenu",
 				defaults = {
 					triggerSelector: "a.bs-menu__icon",
-					wrapperSelector: "nav.bs-menu__wrapper"
+					wrapperSelector: "nav.bs-menu__wrapper",
+					onOpen: function(){ return false; },
+					onClose: function(){ return false; }
 				};
 
 		// The actual plugin constructor
@@ -102,6 +104,7 @@
 				this.isMenuOpen = true;
 				this.menu.addClass("bs-open-all");
 				this.closeIconMenu();
+				this.settings.onOpen();
 			},
 			closeMenu : function() {
 				if( !this.isMenuOpen ) { return; }
@@ -109,6 +112,7 @@
 				this.isMenuOpen = false;
 				this.menu.removeClass("bs-open-all");
 				this.closeIconMenu();
+				this.settings.onClose();
 			}
 		});
 
