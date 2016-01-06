@@ -16,7 +16,9 @@
 					triggerSelector: "a.bs-menu__icon",
 					wrapperSelector: "nav.bs-menu__wrapper",
 					onOpen: function(){ return false; },
-					onClose: function(){ return false; }
+					onClose: function(){ return false; },
+					onTriggerClose: function(){ return false; },
+					onBodyClose: function(){ return false; }
 				};
 
 		// The actual plugin constructor
@@ -34,9 +36,7 @@
 				this.trigger = $( this.settings.triggerSelector );
 				this.menu = $( this.settings.wrapperSelector );
 				this.isMenuOpen = false;
-				this.eventtype = this.isTouch() ? "touchstart.bsmenu" : "click.bsmenu";
-				console.log(this.trigger);
-				console.log(this.menu);
+				this.eventType = this.isTouch() ? "touchstart.bsmenu" : "click.bsmenu";
 				this.initEvents();
 			},
 			isTouch: function() {
@@ -59,28 +59,31 @@
 
 					this.menu.on( "mouseover", function() {
 						self.openMenu();
-						$("body").one( self.eventtype, function() {
+						$("body").one( self.eventType, function() {
 							self.closeMenu();
+							self.settings.onBodyClose();
 						});
 					});
 				}
 
-				this.trigger.on( this.eventtype, function(e) {
+				this.trigger.on( this.eventType, function(e) {
 					e.stopPropagation();
 					e.preventDefault();
 					if( self.isMenuOpen ) {
 						self.closeMenu();
-						$("body").off( self.eventtype );
+						self.settings.onTriggerClose();
+						$("body").off( self.eventType );
 					}
 					else {
 						self.openMenu();
-						$("body").one( self.eventtype, function() {
+						$("body").one( self.eventType, function() {
 							self.closeMenu();
+							self.settings.onBodyClose();
 						});
 					}
 				});
 
-				this.menu.on( this.eventtype, function(e) {
+				this.menu.on( this.eventType, function(e) {
 					e.stopPropagation();
 				});
 			},

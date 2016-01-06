@@ -44,8 +44,17 @@
 		<script>
 			$(function() {
 				$("#bs-menu").bsMenu({
+					onOpen: function() {
+						console.log('onOpen Fired');
+					},
 					onClose: function() {
 						console.log('onClose Fired');
+					},
+					onTriggerClose: function() {
+						console.log('onTriggerClose Fired');
+					},
+					onBodyClose: function() {
+						console.log('onBodyClose Fired');
 					}
 				});
 			});
