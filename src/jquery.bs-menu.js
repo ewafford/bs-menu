@@ -2,19 +2,11 @@
 
 	"use strict";
 
-		// undefined is used here as the undefined global variable in ECMAScript 3 is
-		// mutable (ie. it can be changed by someone else). undefined isn't really being
-		// passed in so we can ensure the value of it is truly undefined. In ES5, undefined
-		// can no longer be modified.
-
-		// window and document are passed through as local variable rather than global
-		// as this (slightly) quickens the resolution process and can be more efficiently
-		// minified (especially when both are regularly referenced in your plugin).
-
 		var pluginName = "bsMenu",
 				defaults = {
 					triggerSelector: "a.bs-menu__icon",
-					wrapperSelector: "nav.bs-menu__wrapper",
+					navSelector: "nav.bs-menu__nav",
+					contentSelector: "div.bs-menu__content",
 					onOpen: function(){ return false; },
 					onClose: function(){ return false; },
 					onTriggerClose: function(){ return false; },
@@ -34,7 +26,8 @@
 		$.extend(Plugin.prototype, {
 			init: function () {
 				this.trigger = $( this.settings.triggerSelector );
-				this.menu = $( this.settings.wrapperSelector );
+				this.menu = $( this.settings.navSelector );
+				this.content = $( this.settings.contentSelector );
 				this.isMenuOpen = false;
 				this.eventType = this.isTouch() ? "touchstart.bsmenu" : "click.bsmenu";
 				this.initEvents();
@@ -88,24 +81,28 @@
 				});
 			},
 			openIconMenu: function() {
-				this.menu.addClass("bs-open-part");
+				this.menu.addClass("bs-menu--open-part");
+				this.content.addClass("bs-menu--opened-part");
 			},
 			closeIconMenu: function() {
-				this.menu.removeClass("bs-open-part");
+				this.menu.removeClass("bs-menu--open-part");
+				this.content.removeClass("bs-menu--opened-part");
 			},
 			openMenu: function() {
 				if( this.isMenuOpen ) { return; }
-				this.trigger.addClass("bs-selected");
+				this.trigger.addClass("bs-menu--selected");
 				this.isMenuOpen = true;
-				this.menu.addClass("bs-open-all");
+				this.menu.addClass("bs-menu--open-all");
+				this.content.addClass("bs-menu--opened-all");
 				this.closeIconMenu();
 				this.settings.onOpen();
 			},
 			closeMenu : function() {
 				if( !this.isMenuOpen ) { return; }
-				this.trigger.removeClass("bs-selected");
+				this.trigger.removeClass("bs-menu--selected");
 				this.isMenuOpen = false;
-				this.menu.removeClass("bs-open-all");
+				this.menu.removeClass("bs-menu--open-all");
+				this.content.removeClass("bs-menu--opened-all");
 				this.closeIconMenu();
 				this.settings.onClose();
 			}

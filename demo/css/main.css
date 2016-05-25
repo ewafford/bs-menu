@@ -14,6 +14,12 @@
 		src: url("../fonts/ecoicons/ecoicons.eot?#iefix") format("embedded-opentype"), url("../fonts/ecoicons/ecoicons.woff") format("woff"), url("../fonts/ecoicons/ecoicons.ttf") format("truetype"), url("../fonts/ecoicons/ecoicons.svg#ecoicons") format("svg");
 }
 
+body {
+	margin-top: 60px;
+	padding-top: 15px;
+	background-color: #f1f1f1;
+}
+
 /* Icomoon.com */
 
 .bs-menu-main,
@@ -75,7 +81,7 @@
 }
 
 .bs-menu-main > li:last-child {
-		float: right;
+		float: left;
 		border-right: none;
 		border-left: 1px solid #c6d0da;
 }
@@ -289,42 +295,63 @@ input.bs-search:focus {
 }
 
 .no-touch .bs-icon-menu:hover::before,
-.no-touch .bs-icon-menu.bs-selected:hover::before {
+.no-touch .bs-icon-menu.bs-menu--selected:hover::before {
 		background: white;
 		box-shadow: 0 3px #5f6f81, 0 -6px white, 0 -9px #5f6f81, 0 -12px white;
 }
 
-.bs-icon-menu.bs-selected::before {
+.bs-icon-menu.bs-menu--selected::before {
 		background: #5993cd;
 		box-shadow: 0 3px white, 0 -6px #5993cd, 0 -9px white, 0 -12px #5993cd;
 }
 
 /* styles for opening menu */
 
-.bs-menu-wrapper.bs-open-all,
-.bs-menu-wrapper.bs-open-part {
+.bs-menu-wrapper.bs-menu--open-all,
+.bs-menu-wrapper.bs-menu--open-part {
 		-webkit-transform: translateX(0px);
 		-moz-transform: translateX(0px);
 		transform: translateX(0px);
 }
 
-.bs-menu-wrapper.bs-open-all {
+.bs-menu__content {
+	-webkit-transform: translateX(0px);
+	-moz-transform: translateX(0px);
+	transform: translateX(0px);
+	-webkit-transition: -webkit-transform 0.3s, width 0.3s;
+	-moz-transition: -moz-transform 0.3s, width 0.3s;
+	transition: transform 0.3s, width 0.3s;
+}
+
+.bs-menu--opened-part {
+	-webkit-transform: translateX(60px);
+	-moz-transform: translateX(60px);
+	transform: translateX(60px);
+}
+
+.bs-menu--opened-all{
+	-webkit-transform: translateX(340px);
+	-moz-transform: translateX(340px);
+	transform: translateX(340px);
+}
+
+.bs-menu-wrapper.bs-menu--open-all {
 		width: 340px
 }
 
-.bs-menu-wrapper.bs-open-all .bs-submenu li {
+.bs-menu-wrapper.bs-menu--open-all .bs-submenu li {
 		height: 60px
 }
 
 @media screen and (max-width: 422px) {
-	.bs-menu-wrapper.bs-open-all {
+	.bs-menu-wrapper.bs-menu--open-all {
 			-webkit-transform: translateX(0px);
 			-moz-transform: translateX(0px);
 			transform: translateX(0px);
 			width: 100%;
 	}
 
-	.bs-menu-wrapper.bs-open-all .bs-scroller {
+	.bs-menu-wrapper.bs-menu--open-all .bs-scroller {
 			width: 130%
 	}
 }
